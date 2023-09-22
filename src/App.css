@@ -1,5 +1,5 @@
 * {
-    background-color: #999;
+    background-color: #eeb1ed;
 }
 .todo-wrapper {
     width: 50rem;
@@ -18,4 +18,27 @@
 .checked {
     text-decoration: line-through;
     color: red;
+}
+
+.todo-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.todo-input input{
+   width: 100%;;
+    min-width: 20rem;
+    max-width: 30rem;
+     height: 3rem;
+     outline: none;
+}
+
+.todo-input button{
+    background-color: black;
+    color: #fff;
+    font-weight: 700;
+    height: 3rem;
+    border: none;
 }
