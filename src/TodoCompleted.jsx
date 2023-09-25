@@ -1,10 +1,24 @@
-
-import React from 'react'
+import React, { useContext } from "react";
+import { TodoContext } from "./Contexts/TodoContext";
+import TodoItem from "./TodoItem";
 
 const TodoCompleted = () => {
-  return (
-    <div>TodoCompleted</div>
-  )
-}
+  const { todos } = useContext(TodoContext);
+  const completed = todos.filter(todo => todo.completed === true);
 
-export default TodoCompleted
+  return (
+    <div>
+      {completed.length ? (
+        <ul>
+          {completed.map(complete => (
+            <TodoItem todo={complete} key={complete.id} />
+          ))}
+        </ul>
+      ) : (
+        <div className='empty-info'>No items found</div>
+      )}
+    </div>
+  );
+};
+
+export default TodoCompleted;

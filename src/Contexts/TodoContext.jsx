@@ -60,10 +60,13 @@ export const TodoProvider = ({ children }) => {
     };
 
     const handleEdit = (e) => {
+       const newTitle = e.target.value.trim(); 
+    if (newTitle !== "") {
         const newTodos = todos.map((todo) =>
-            todo.id === editId ? { ...todo, title: e.target.value } : todo
+            todo.id === editId ? { ...todo, title: newTitle } : todo
         );
         setTodos(newTodos);
+    }
     };
 
     const handleAddTodo = () => {
