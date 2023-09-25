@@ -6,6 +6,10 @@ export const TodoProvider = ({ children }) => {
     const [todos, setTodos] = useState([]);
     const [editId, setEditId] = useState(null);
     const [inputValue, setInputValue] = useState('')
+    const [showCompleted, setShowCompleted] = useState(true);
+    const [showAll, setShowAll] = useState(false);
+    const [showUncomplete, setShowUncomplete] = useState(true);
+    
 
     useEffect(() => {
         let canceled = false;
@@ -22,6 +26,26 @@ export const TodoProvider = ({ children }) => {
 
         return () => (canceled = true);
     }, []);
+    
+    const handleCompleted = ()=>{
+         setShowAll(true);
+        setShowUncomplete(true);
+        setShowCompleted(false)
+       
+        console.log(showCompleted)
+    }
+
+    const handleAll = ()=>{
+        setShowAll(false);
+        setShowCompleted(true);
+         setShowUncomplete(true);
+    }
+
+    const handleUncomplete =()=>{
+        setShowUncomplete(false);
+        setShowCompleted(true);
+        setShowAll(true);
+    }
 
     const handleCheck = (id) => {
         const newTodos = todos.map((todo) =>
@@ -61,10 +85,19 @@ export const TodoProvider = ({ children }) => {
             setInputValue,
             editId,
             setEditId,
+            showCompleted,
+            showAll, 
+            showUncomplete,
+            setShowUncomplete,
+            setShowAll,
+            setShowCompleted,
             handleAddTodo,
             handleDelete,
             handleCheck,
-            handleEdit
+            handleEdit,
+            handleCompleted,
+            handleAll,
+            handleUncomplete
         }}>
             {children}
         </TodoContext.Provider>
